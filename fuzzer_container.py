@@ -167,10 +167,10 @@ def get_container_id() -> bytes:
     return subprocess.check_output(
         [
             "docker",
-            "compose",
             "ps",
             "-q",
-            "wordpress1",
+            "--filter",
+            "name=wordpress1",
         ]
     ).strip()
 
