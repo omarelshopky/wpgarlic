@@ -39,7 +39,7 @@ def _copy_plugin_into_container(file_path: str) -> str:
     file_name = basename(file_path)
     new_file_path = f"/fuzzer/plugin_{file_name}"
     subprocess.call(
-        ["docker", "cp", file_path, f"{os.path.basename(os.path.dirname(__file__))}-wordpress1-1:{new_file_path}"]
+        ["docker", "cp", file_path, f"{os.path.basename(os.path.dirname(__file__))}_wordpress1_1:{new_file_path}"]
     )
     return new_file_path
 
@@ -51,7 +51,7 @@ def copy_nonces_into_container(plugin_name: str) -> None:
         f.flush()
         new_file_path = "/fuzzer/valid_nonces.txt"
         subprocess.call(
-            ["docker", "cp", f.name, f"{os.path.basename(os.path.dirname(__file__))}-wordpress1-1:{new_file_path}"]
+            ["docker", "cp", f.name, f"{os.path.basename(os.path.dirname(__file__))}_wordpress1_1:{new_file_path}"]
         )
 
 
