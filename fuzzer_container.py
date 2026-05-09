@@ -207,19 +207,15 @@ def reinitialize_containers():
             "compose",
             "stop",
         ],
-        stderr=subprocess.DEVNULL,
     )
     subprocess.call(
         [
             "docker",
             "compose",
-            "rm",
-            "-f",
+            "down",
             "-v",
-            "db1",
-            "wordpress1",
+            "--remove-orphans"
         ],
-        stderr=subprocess.DEVNULL,
     )
     subprocess.call(
         [
