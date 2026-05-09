@@ -205,13 +205,6 @@ def reinitialize_containers():
         [
             "docker",
             "compose",
-            "stop",
-        ],
-    )
-    subprocess.call(
-        [
-            "docker",
-            "compose",
             "down",
             "-v",
             "--remove-orphans"
@@ -245,6 +238,7 @@ def reinitialize_containers():
     )
     run_in_container(["php.orig", "/wp-cli.phar", "--allow-root", "core", "update"])
     run_in_container(["php.orig", "/wp-cli.phar", "--allow-root", "core", "update-db"])
+    time.sleep(5)
 
 
 def install_plugin_from_svn(slug: str, revision: str):
